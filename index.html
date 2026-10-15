@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Treino diário de mira e reflexos no navegador." />
+    <title>Reflexpace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main id="app">
+      <section id="screen-menu" class="screen">
+        <div class="panel menu">
+          <p class="eyebrow">Academia Holográfica</p>
+          <h1 class="logo">Reflexpace</h1>
+          <p class="tagline">Treino diário de mira e reflexos, Cadete.</p>
+
+          <div class="field">
+            <span class="field-label" id="difficulty-label">Dificuldade</span>
+            <div
+              class="segmented"
+              role="radiogroup"
+              aria-labelledby="difficulty-label"
+              id="difficulty"
+            >
+              <button type="button" role="radio" data-difficulty="cadet" aria-checked="true">
+                Cadete
+              </button>
+              <button type="button" role="radio" data-difficulty="guardian" aria-checked="false">
+                Guardião
+              </button>
+              <button type="button" role="radio" data-difficulty="master" aria-checked="false">
+                Mestre
+              </button>
+            </div>
+          </div>
+
+          <div class="modes">
+            <button type="button" class="mode-card" id="play-target-lock">
+              <span class="mode-name">Alvo Certo</span>
+              <span class="mode-desc">Acerte os drones ciano. Ignore as iscas vermelhas.</span>
+            </button>
+            <button type="button" class="mode-card" disabled>
+              <span class="mode-name">Rastreamento</span>
+              <span class="mode-desc">Em breve</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-game" class="screen screen-game" hidden>
+        <canvas id="arena"></canvas>
+        <div class="hud" aria-live="off">
+          <div class="hud-item">
+            <span class="hud-label">Tempo</span>
+            <span class="hud-value" id="hud-time">60.0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Score</span>
+            <span class="hud-value" id="hud-score">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Combo</span>
+            <span class="hud-value" id="hud-combo">0</span>
+          </div>
+        </div>
+        <div id="countdown" class="countdown" hidden>3</div>
+        <p class="hint">Esc para sair</p>
+      </section>
+
+      <section id="screen-results" class="screen" hidden>
+        <div class="panel results">
+          <p class="eyebrow">Alvo Certo · <span id="res-difficulty"></span></p>
+          <p class="res-score" id="res-score">0</p>
+          <p class="res-record" id="res-record"></p>
+          <dl class="stats">
+            <div>
+              <dt>Reação mediana</dt>
+              <dd id="res-reaction">—</dd>
+            </div>
+            <div>
+              <dt>Precisão</dt>
+              <dd id="res-accuracy">—</dd>
+            </div>
+            <div>
+              <dt>Acertos</dt>
+              <dd id="res-hits">0</dd>
+            </div>
+            <div>
+              <dt>Iscas acertadas</dt>
+              <dd id="res-decoys">0</dd>
+            </div>
+            <div>
+              <dt>Expirados</dt>
+              <dd id="res-expired">0</dd>
+            </div>
+            <div>
+              <dt>Melhor combo</dt>
+              <dd id="res-combo">0</dd>
+            </div>
+          </dl>
+          <p class="disclaimer">
+            Tempo de reação medido no navegador, sem a latência do monitor. Use para comparar você
+            com você mesmo.
+          </p>
+          <div class="actions">
+            <button type="button" class="btn primary" id="btn-again">Jogar de novo</button>
+            <button type="button" class="btn" id="btn-menu">Menu</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
