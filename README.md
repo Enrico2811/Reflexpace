@@ -56,18 +56,28 @@ Mantenha a mira sobre um alvo que muda de direção, acelera e para sem aviso. T
 
 ## 📁 Estrutura
 
+Monorepo com *npm workspaces*:
+
 ```
 reflexpace/
-├─ src/
-│  ├─ core/       # loop do jogo, canvas, input, RNG com semente, tipos de sessão
-│  ├─ modes/      # Alvo Certo (pronto) e Rastreamento (em breve)
-│  ├─ scoring/    # pontuação, rating e recordes
-│  ├─ storage/    # persistência e export/import
-│  ├─ ui/         # telas e gráficos
-│  └─ audio/      # sons sintetizados
-├─ docs/          # documentação e mídia
-└─ tests/
+├─ shared/        # lógica pura do jogo, sem DOM nem Node (usada pelo front e pelo back)
+│  ├─ src/
+│  │  ├─ modes/   # simulação dos modos (Alvo Certo pronto, Rastreamento em breve)
+│  │  ├─ scoring/ # pontuação, rating e recordes
+│  │  └─ ...      # tipos, sessão, RNG com semente
+│  └─ tests/
+├─ frontend/      # app no navegador (Vite + Canvas 2D)
+│  └─ src/
+│     ├─ core/    # loop, canvas e input do navegador
+│     ├─ modes/   # renderização de cada modo
+│     ├─ storage/ # persistência local e export/import
+│     └─ ui/      # telas e gráficos
+├─ backend/       # API (Fastify): sessões, métricas e ranking no futuro
+│  └─ src/
+└─ docs/          # documentação e mídia
 ```
+
+A regra é simples: tudo o que precisa dar o **mesmo resultado** no navegador e no servidor (simulação, pontuação, tipos de sessão) mora em `shared/`. Assim o backend poderá recalcular e validar pontuações sem duplicar código.
 
 ## 🚀 Como rodar
 
@@ -84,11 +94,13 @@ Abra `http://localhost:5173` no navegador.
 
 | Comando | O que faz |
 |---|---|
-| `npm run dev` | Servidor de desenvolvimento com recarga automática |
+| `npm run dev` | Frontend com recarga automática |
+| `npm run dev:backend` | Backend em `http://localhost:3000` (rota `/health`) |
 | `npm test` | Roda os testes (Vitest) |
+| `npm run typecheck` | Checa os tipos dos três pacotes |
 | `npm run lint` | Verifica o código (ESLint) |
 | `npm run format` | Formata o código (Prettier) |
-| `npm run build` | Gera a versão de produção em `dist/` |
+| `npm run build` | Gera a versão de produção do frontend em `frontend/dist/` |
 
 ## 🗺️ Roadmap
 

@@ -1,4 +1,4 @@
-import type { Difficulty } from '../../core/types';
+import type { Difficulty } from '../../types';
 
 export interface TargetLockConfig {
   radius: number;

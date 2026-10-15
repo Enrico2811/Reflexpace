@@ -1,5 +1,4 @@
-import type { Session } from '../core/session';
-import type { Difficulty, GameMode } from '../core/types';
+import type { Difficulty, GameMode, Session } from '@reflexpace/shared';
 
 /** Sessões em memória (Fase 1). Será trocado por localStorage/IndexedDB na Fase 4. */
 export class MemorySessionStore {

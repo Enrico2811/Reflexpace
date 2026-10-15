@@ -1,5 +1,5 @@
-import { randomRange, type Rng } from '../../core/rng';
-import type { Size } from '../../core/types';
+import { randomRange, type Rng } from '../../rng';
+import type { Size } from '../../types';
 import {
   PENALTY_DECOY,
   PENALTY_EXPIRED,

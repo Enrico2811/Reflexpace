@@ -1,4 +1,4 @@
-import type { Size } from './types';
+import type { Size } from '@reflexpace/shared';
 
 /** Canvas que acompanha o tamanho do elemento e a densidade de pixels da tela. */
 export class ResponsiveCanvas implements Size {

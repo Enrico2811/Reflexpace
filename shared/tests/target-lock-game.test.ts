@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createRng } from '../src/core/rng';
+import { createRng } from '../src/rng';
 import type { TargetLockConfig } from '../src/modes/target-lock/config';
 import { TargetLockGame } from '../src/modes/target-lock/game';
 

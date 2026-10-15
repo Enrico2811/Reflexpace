@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createRng, dailySeed, hashSeed, randomRange } from '../src/core/rng';
+import { createRng, dailySeed, hashSeed, randomRange } from '../src/rng';
 
 describe('rng', () => {
   it('gera a mesma sequência para a mesma semente', () => {

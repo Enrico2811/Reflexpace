@@ -1,13 +1,17 @@
+import {
+  DIFFICULTY_LABELS,
+  INITIAL_RATING,
+  TARGET_LOCK_CONFIGS,
+  TargetLockGame,
+  computeTargetLockMetrics,
+  createRng,
+  type Difficulty,
+  type Session,
+} from '@reflexpace/shared';
 import { ResponsiveCanvas } from '../core/canvas';
 import { PointerInput, type PointerPress } from '../core/input';
 import { GameLoop } from '../core/loop';
-import { createRng } from '../core/rng';
-import { INITIAL_RATING, type Session } from '../core/session';
-import { DIFFICULTY_LABELS, type Difficulty } from '../core/types';
-import { TARGET_LOCK_CONFIGS } from '../modes/target-lock/config';
-import { TargetLockGame } from '../modes/target-lock/game';
 import { TargetLockRenderer } from '../modes/target-lock/renderer';
-import { computeTargetLockMetrics } from '../scoring/target-lock';
 import { MemorySessionStore } from '../storage/memory-store';
 import { $, formatMs, formatPercent, formatScore } from './dom';
 

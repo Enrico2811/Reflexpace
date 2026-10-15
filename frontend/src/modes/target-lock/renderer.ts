@@ -1,4 +1,4 @@
-import type { Target, TargetLockGame } from './game';
+import type { Target, TargetLockGame } from '@reflexpace/shared';
 
 const COLORS = {
   space: '#070B1A',
